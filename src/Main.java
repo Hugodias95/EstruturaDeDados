@@ -9,13 +9,9 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Lista lista = new Lista();
-        lista.insereNoInicio(11);
-        lista.insereNoInicio(12);
-        lista.insereNoInicio(13);
-        lista.insereNoInicio(14);
-        lista.insereNoInicio(15);
-        lista.print();
+        //Lista lista = new Lista();
+        //lista.insereNoInicio(11);
+        //lista.insereNoInicio(12);
         console();
         //lista.removeFromPosicao(0);
         //lista.removeFromPosicao(3);
@@ -35,7 +31,6 @@ public class Main {
             int selecionado = 0;
             int valor = 0;
             int posicao = 0;
-            String palavraBuscada = "";
 
             Lista lista = new Lista();
 
@@ -55,6 +50,7 @@ public class Main {
                             System.out.println("Qual número deseja inserir no início?");
                             valor = Integer.parseInt(sc.nextLine());
                             lista.insereNoInicio(valor);
+                            lista.print();
                             break;
                         case 2:
                             System.out.println("Qual número deseja inserir no final?");
@@ -97,10 +93,11 @@ public class Main {
                     }
                 }
                 if (selecionado == 3)  {
+                    Boolean achou = false;
                     System.out.println("Qual número você deseja buscar?");
                     valor = Integer.parseInt(sc.nextLine());
-                    lista.buscaElemento(valor);
-                    if (lista.buscaElemento(valor) == true) {
+                    achou = lista.buscaElemento(valor);
+                    if (achou == true) {
                         System.out.println("Número " + valor + " está na lista!" );
                     } else {
                         System.out.println("Número " + valor + " não está na lista!" );
