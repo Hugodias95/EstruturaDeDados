@@ -46,9 +46,30 @@ public class Lista {
 
 
 	//Insere na posicao informada
-	public void insereNaPosicao(int posicao, Object elemento) {
+	public void insereNaPosicao(int posicao, Object elemento) throws EmptyListException {
+		if (estaVazia() || posicao > tamanhoLista) {
+			throw new EmptyListException(nome);
+		}
 
+		ListaNo novoNo = new ListaNo(elemento);
+		int cont = 1;
+		if (posicao == 1){
+			novoNo.setProximoNo(primeiroNo);
+			primeiroNo = novoNo;
+			cont++;
+			return;
+		}
+		while(cont< posicao-1 && primeiroNo.getProximoNo() != null){
+			primeiroNo = primeiroNo.getProximoNo();
+			cont++;
+		}
 
+		if (novoNo == null){
+			throw new EmptyListException("Objeto inválido");
+		}
+
+		novoNo.setProximoNo(primeiroNo.getProximoNo());
+		primeiroNo.setProximoNo(novoNo);
 	}
 
 	// remove o primeiro n� de List
@@ -66,6 +87,35 @@ public class Lista {
 		this.tamanhoLista--;
 		return removedItem;// retorna dados de n� removidas
 	}// fim do metodo removeNoFim
+
+	public Object removeValor(Object elemento) throws EmptyListException {
+		if (estaVazia()) {
+			throw new EmptyListException("A lista está vazia.");
+		}
+
+		ListaNo atual = primeiroNo;
+		ListaNo anterior = null;
+
+		while (atual != null && !atual.getData().equals(elemento)) {
+			anterior = atual;
+			atual = atual.getProximoNo();
+		}
+
+		if (atual == null) {
+			return null; // o elemento não foi encontrado
+		}
+
+		if (anterior == null) {
+			primeiroNo = atual.getProximoNo();
+		} else {
+			anterior.setProximoNo(atual.getProximoNo());
+		}
+
+		tamanhoLista--;
+
+		return atual.getData();
+	}
+
 
 	public Object removeNoFim() throws EmptyListException{
 		if (estaVazia()){
@@ -130,22 +180,19 @@ public class Lista {
 		}
 		tamanhoLista--; // Atualiza o tamanho da lista
 		return removedItem; // Retorna o valor do elemento removido
-
-
-
 	}
 	
 	
-	/*public boolean buscaElemento(Object elemento) {
-		NoLista atual = primeiro; // Começa a busca pelo primeiro elemento
+	public boolean buscaElemento(Object elemento) {
+		ListaNo atual = primeiroNo; // Começa a busca pelo primeiro elemento
 		while (atual != null) { // Percorre a lista até encontrar o elemento ou chegar ao fim
-			if (atual.getElemento().equals(elemento)) { // Verifica se o elemento atual é igual ao buscado
+			if (atual.getData().equals(elemento)) { // Verifica se o elemento atual é igual ao buscado
 				return true; // Elemento encontrado
 			}
-			atual = atual.getProximo(); // Passa para o próximo elemento da lista
+			atual = atual.getProximoNo(); // Passa para o próximo elemento da lista
 		}
 		return false; // Elemento não encontrado
-	}*/
+	}
 
 
 	// Determina se a lista estiver vazia

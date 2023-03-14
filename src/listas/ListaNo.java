@@ -22,7 +22,7 @@ public class ListaNo {
 		this.data = data;
 	}
 	
-	// retorna refer�ncia aos dados no n�
+	// retorna refer�ncia aos dados no nó
 	Object getData() {
 		return data; // retorna Object nesse n�
 	}// fim do metodo getObject
