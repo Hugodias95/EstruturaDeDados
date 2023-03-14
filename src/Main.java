@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws EmptyListException {
+    public static void main(String[] args) throws Exception {
 
         Lista lista = new Lista();
         lista.insereNoInicio(11);
@@ -16,18 +16,14 @@ public class Main {
         lista.insereNoInicio(14);
         lista.insereNoInicio(15);
         lista.print();
-
+        console();
         //lista.removeFromPosicao(0);
         //lista.removeFromPosicao(3);
 
 
         //lista.print();
 
-        lista.buscaElemento(12);
-        System.out.println(lista.buscaElemento(12));
-        lista.removeValor(12);
-        lista.print();
-        System.out.println(lista.buscaElemento(12));
+
 
     }
 
@@ -41,12 +37,12 @@ public class Main {
             int posicao = 0;
             String palavraBuscada = "";
 
-            Lista lista = null;
+            Lista lista = new Lista();
 
             Scanner sc = new Scanner(System.in);
             while (true) {
 
-                System.out.println("Selecione:\n(1) Inserir\n(2) Remover\n(3) Buscar\n(4) Imprimir\n (0) Sair");
+                System.out.println("Selecione:\n(1) Inserir\n(2) Remover\n(3) Buscar\n(4) Imprimir\n(0) Sair");
                 selecionado = Integer.parseInt(sc.nextLine());
 
                 if (selecionado==1) {
@@ -91,10 +87,7 @@ public class Main {
                         case 3:
                             System.out.println("Qual número você deseja remover?");
                             valor = Integer.parseInt(sc.nextLine());
-                            lista.buscaElemento(valor);
-                            if (lista.buscaElemento(valor) == true)
-                            valor = Integer.parseInt(sc.nextLine());
-                            lista.insereNaPosicao(posicao,valor);
+                            lista.removeValor(valor);
                             break;
                         case 4:
                             System.out.println("Escolha a posição que deseja remover o número:");
@@ -102,6 +95,19 @@ public class Main {
                             lista.removeFromPosicao(posicao);
                             break;
                     }
+                }
+                if (selecionado == 3)  {
+                    System.out.println("Qual número você deseja buscar?");
+                    valor = Integer.parseInt(sc.nextLine());
+                    lista.buscaElemento(valor);
+                    if (lista.buscaElemento(valor) == true) {
+                        System.out.println("Número " + valor + " está na lista!" );
+                    } else {
+                        System.out.println("Número " + valor + " não está na lista!" );
+                    }
+                }
+                if (selecionado == 4) {
+                    lista.print();
                 }
             }
         } catch (Exception e) {

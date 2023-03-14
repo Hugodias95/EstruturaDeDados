@@ -96,9 +96,10 @@ public class Lista {
 		ListaNo atual = primeiroNo;
 		ListaNo anterior = null;
 
-		while (atual != null && !atual.getData().equals(elemento)) {
+		while (atual != null && !atual.getData().equals(elemento)) { //Enquanto o atual for diferente do elemento buscado
 			anterior = atual;
 			atual = atual.getProximoNo();
+			//guarda o anterior no lugar do atual e atribui ao atual o próximo nó
 		}
 
 		if (atual == null) {
