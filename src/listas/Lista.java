@@ -52,24 +52,25 @@ public class Lista {
 		}
 
 		ListaNo novoNo = new ListaNo(elemento);
+		ListaNo noAux = primeiroNo.proximoNo;
 		int cont = 1;
-		if (posicao == 1){
-			novoNo.setProximoNo(primeiroNo);
-			primeiroNo = novoNo;
-			cont++;
-			return;
-		}
-		while(cont< posicao-1 && primeiroNo.getProximoNo() != null){
-			primeiroNo = primeiroNo.getProximoNo();
-			cont++;
-		}
 
 		if (novoNo == null){
 			throw new EmptyListException("Objeto inválido");
 		}
 
-		novoNo.setProximoNo(primeiroNo.getProximoNo());
-		primeiroNo.setProximoNo(novoNo);
+		if (posicao == 1){
+			novoNo.setProximoNo(primeiroNo);
+			primeiroNo = novoNo;
+			cont++;
+			return;
+		} else {
+			while(cont< posicao-1 && primeiroNo.getProximoNo() != null){
+				noAux = primeiroNo.getProximoNo();
+				cont++;
+			}
+		}
+
 	}
 
 	// remove o primeiro n� de List
