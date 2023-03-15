@@ -63,12 +63,14 @@ public class Lista {
 			return;
 
 		} else {
-			ListaNo noAnterior = primeiroNo.proximoNo;
-			for (int i = 0; i < posicao - 1; i++){
-				noAnterior = noAnterior.proximoNo;
+			ListaNo atual = primeiroNo;
+			for (int i = 1; i < posicao - 1; i++){
+				atual = atual.proximoNo;
 			}
-			novoNo.proximoNo = noAnterior.proximoNo;
-			noAnterior.proximoNo = novoNo;
+
+			ListaNo proximo = atual.proximoNo; //2
+			atual.proximoNo = novoNo; //20
+			atual.proximoNo.proximoNo = proximo; //2
 
 		}
 		this.tamanhoLista++;
@@ -213,10 +215,10 @@ public class Lista {
 
 		System.out.printf("A lista %s �: ", nome);
 		ListaNo current = primeiroNo;
-		// enquanto n�o estiver no fim da lista, gera sa�da dos dados do n�
+		// enquanto não estiver no fim da lista, gera sa�da dos dados do n�
 		// atual
 		while (current != null) {
-			System.out.printf("%s -> ", current.data);
+			System.out.printf("%s - ", current.data);
 			current = current.proximoNo;
 		}// fim do While
 		System.out.printf("\n");

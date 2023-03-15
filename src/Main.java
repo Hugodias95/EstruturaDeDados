@@ -33,7 +33,10 @@ public class Main {
             int posicao = 0;
 
             Lista lista = new Lista();
-
+            lista.insereNoFim(1);
+            lista.insereNoFim(2);
+            lista.insereNoFim(3);
+            lista.insereNoFim(4);
             Scanner sc = new Scanner(System.in);
             while (true) {
 
