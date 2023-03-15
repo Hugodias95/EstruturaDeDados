@@ -52,8 +52,6 @@ public class Lista {
 		}
 
 		ListaNo novoNo = new ListaNo(elemento);
-		ListaNo noAux = primeiroNo.proximoNo;
-		int cont = 1;
 
 		if (novoNo == null){
 			throw new EmptyListException("Objeto inválido");
@@ -62,15 +60,18 @@ public class Lista {
 		if (posicao == 1){
 			novoNo.setProximoNo(primeiroNo);
 			primeiroNo = novoNo;
-			cont++;
 			return;
-		} else {
-			while(cont< posicao-1 && primeiroNo.getProximoNo() != null){
-				noAux = primeiroNo.getProximoNo();
-				cont++;
-			}
-		}
 
+		} else {
+			ListaNo noAnterior = primeiroNo.proximoNo;
+			for (int i = 0; i < posicao - 1; i++){
+				noAnterior = noAnterior.proximoNo;
+			}
+			novoNo.proximoNo = noAnterior.proximoNo;
+			noAnterior.proximoNo = novoNo;
+
+		}
+		this.tamanhoLista++;
 	}
 
 	// remove o primeiro n� de List
