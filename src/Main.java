@@ -106,6 +106,9 @@ public class Main {
                 if (selecionado == 4) {
                     lista.print();
                 }
+                if (selecionado == 0) {
+                    System.exit(0);
+                }
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
