@@ -50,6 +50,7 @@ public class Lista {
 		if (estaVazia() || posicao > tamanhoLista) {
 			throw new EmptyListException(nome);
 		}
+		//
 
 		ListaNo novoNo = new ListaNo(elemento);
 
@@ -66,6 +67,7 @@ public class Lista {
 			ListaNo atual = primeiroNo;
 			for (int i = 1; i < posicao - 1; i++){
 				atual = atual.proximoNo;
+
 			}
 
 			ListaNo proximo = atual.proximoNo; //2

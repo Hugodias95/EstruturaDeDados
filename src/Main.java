@@ -74,7 +74,7 @@ public class Main {
                 if (selecionado == 2) {
                     System.out.println("Como você deseja remover:\n");
                     System.out.println("(1) Remover do início\n(2) Remover do fim\n(3) Remover por valor\n(4) Remover por posição");
-                    int selecionadoRemover = Integer.parseInt(sc.nextLine());
+                    int selecionadoRemover = Integer.parseInt(sc.nextLine());//
 
                     switch (selecionadoRemover){
                         case 1:
