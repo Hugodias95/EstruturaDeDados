@@ -33,7 +33,6 @@ public class ListaNo {
 	}// fim do metodo getNext
 
 	public void setProximoNo(ListaNo novo) {
-		// TODO Auto-generated method stub
 		this.proximoNo = novo;
 	}
 }// fim da classe ListaNo
