@@ -1,11 +1,10 @@
 package src;
 
-import src.listas.EmptyListException;
 import src.listas.Lista;
 
 import java.util.Scanner;
 
-public class Main {
+public class MainLista {
 
     public static void main(String[] args) throws Exception {
 
