@@ -43,9 +43,9 @@ public class Main {
                 if (selecionado==1) {
                     System.out.println("Como você deseja inserir:\n");
                     System.out.println("(1) Inserir no início\n(2) Inserir no fim\n(3) Inserir na posição");
-                    selecionado = Integer.parseInt(sc.nextLine());
+                    int selecionadoInserir = Integer.parseInt(sc.nextLine());
 
-                    switch (selecionado){
+                    switch (selecionadoInserir){
                         case 1:
                             System.out.println("Qual número deseja inserir no início?");
                             valor = Integer.parseInt(sc.nextLine());
@@ -56,6 +56,7 @@ public class Main {
                             System.out.println("Qual número deseja inserir no final?");
                             valor = Integer.parseInt(sc.nextLine());
                             lista.insereNoFim(valor);
+                            lista.print();
                             break;
                         case 3:
                             System.out.println("Escolha a posição que deseja colocar o número:");
@@ -63,32 +64,37 @@ public class Main {
                             System.out.println("Escolha o número para inserir:");
                             valor = Integer.parseInt(sc.nextLine());
                             lista.insereNaPosicao(posicao,valor);
+                            lista.print();
                             break;
                     }
                 }
                 if (selecionado == 2) {
                     System.out.println("Como você deseja remover:\n");
                     System.out.println("(1) Remover do início\n(2) Remover do fim\n(3) Remover por valor\n(4) Remover por posição");
-                    selecionado = Integer.parseInt(sc.nextLine());
+                    int selecionadoRemover = Integer.parseInt(sc.nextLine());
 
-                    switch (selecionado){
+                    switch (selecionadoRemover){
                         case 1:
                             lista.removeNoInicio();
                             System.out.println("Valor removido do início");
+                            lista.print();
                             break;
                         case 2:
                             lista.removeNoFim();
                             System.out.println("Valor removido do final");
+                            lista.print();
                             break;
                         case 3:
                             System.out.println("Qual número você deseja remover?");
                             valor = Integer.parseInt(sc.nextLine());
                             lista.removeValor(valor);
+                            lista.print();
                             break;
                         case 4:
                             System.out.println("Escolha a posição que deseja remover o número:");
                             posicao = Integer.parseInt(sc.nextLine());
                             lista.removeFromPosicao(posicao);
+                            lista.print();
                             break;
                     }
                 }
@@ -102,6 +108,7 @@ public class Main {
                     } else {
                         System.out.println("Número " + valor + " não está na lista!" );
                     }
+                    lista.print();
                 }
                 if (selecionado == 4) {
                     lista.print();
